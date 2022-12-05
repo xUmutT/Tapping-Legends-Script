@@ -1,0 +1,40 @@
+if game.PlaceId == 8750997647 then
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+    local Window = OrionLib:MakeWindow({Name = "Massacre Hub / [❄️FROST!] ⚡ Tapping Legends X", HidePremium = false, Intro = false,IntroText = "Massacre Hub", SaveConfig = true, ConfigFolder = "MassacreConfig"})
+    
+    --Values
+    _G.autoTap = true
+
+
+    --Functions
+
+    function autoTap()
+        while _G.autoTap == true do
+            game:GetService("ReplicatedStorage").Remotes.Tap:FireServer()
+            wait(.0001)
+        end
+    end
+
+
+    -- Tabs
+    local FarmTab = Window:MakeTab({
+        Name = "Autofarm",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    
+    --Togles
+    FarmTab:AddToggle({
+        Name = "Auto Click",
+        Default = false,
+        Callback = function(Value)
+            _G.autoTap = Value
+            autoTap()
+        end    
+    })
+    
+    
+    
+    
+    end
+    OrionLib:Init()
